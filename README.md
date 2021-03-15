@@ -3,17 +3,17 @@ A simple Go library for rendering LaTeX documents
 
 # Install
 ```bash
-go get -u github.com/rwestlund/gotex
+go get -u github.com/DerLukas15/gotex
 ```
 
 # Documentation
-See the documentation at [https://godoc.org/github.com/rwestlund/gotex](https://godoc.org/github.com/rwestlund/gotex)
+See the documentation at [https://godoc.org/github.com/DerLukas15/gotex](https://godoc.org/github.com/DerLukas15/gotex)
 
 # Example
 ```go
 package main
 
-import "github.com/rwestlund/gotex"
+import "github.com/DerLukas15/gotex"
 
 func main() {
     var document = `

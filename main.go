@@ -58,6 +58,10 @@ type Options struct {
 	// such as image files that are needed to compile the document. It is added
 	// to $TEXINPUTS for the LaTeX process.
 	Texinputs string
+
+	// Args is a slice of additional arguments to be supplied while executing the
+	// command.
+	Args []string
 }
 
 // Render takes the LaTeX document to be rendered as a string. It returns the
@@ -111,6 +115,7 @@ func Render(document string, options Options) ([]byte, error) {
 // runLatex does the actual work of spawning the child and waiting for it.
 func runLatex(document string, options Options, dir string) error {
 	var args = []string{"-jobname=gotex", "-halt-on-error"}
+	args = append(args, options.Args...)
 
 	// Prepare the command.
 	var cmd = exec.Command(options.Command, args...)
