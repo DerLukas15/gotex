@@ -3,7 +3,7 @@
 
 // Package gotex is a simple library to render LaTeX documents.
 //
-// Example
+// # Example
 //
 // Use it like this:
 //
@@ -36,7 +36,6 @@ package gotex
 import (
 	"bufio"
 	"errors"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path"
@@ -75,7 +74,7 @@ func Render(document string, options Options) ([]byte, error) {
 	}
 
 	// Create the temporary directory where LaTeX will dump its ugliness.
-	var dir, err = ioutil.TempDir("", "gotex-")
+	var dir, err = os.MkdirTemp("", "gotex-")
 	if err != nil {
 		return nil, err
 	}
@@ -102,7 +101,7 @@ func Render(document string, options Options) ([]byte, error) {
 	}
 
 	// Slurp the output.
-	output, err := ioutil.ReadFile(path.Join(dir, "gotex.pdf"))
+	output, err := os.ReadFile(path.Join(dir, "gotex.pdf"))
 	if err != nil {
 		return nil, err
 	}
